@@ -35,4 +35,14 @@ describe("fizzbuzz", () => {
     expect(a).toBe(true);
     expect(iterator).toBe(100);
   });
+  /**
+   * we progress by demanding a specif type for a specific position/item.
+   */
+  it("should have a string item if the item is a multiple of 3 or five", () => {
+    const result = fizzbuzz();
+    const multiplesOfThree = result.filter((item) => +item % 3 === 0);
+    expect(
+      multiplesOfThree.every((item) => typeof item === "string")
+    ).toBeTruthy();
+  });
 });
