@@ -26,14 +26,13 @@ describe("fizzbuzz", () => {
   it("should have numbers or strings as items", () => {
     const result = fizzbuzz();
     let iterator = 0;
+    const a = result.every((item) => {
+      const isString = typeof item === "string";
+      const isNumber = typeof item === "number";
+      iterator++;
+      return isString || isNumber;
+    });
+    expect(a).toBe(true);
     expect(iterator).toBe(100);
-    expect(
-      result.every((item) => {
-        const isString = typeof item === "string";
-        const isNumber = typeof item === "number";
-        iterator++;
-        return isString || isNumber;
-      })
-    ).toBe(true);
   });
 });
