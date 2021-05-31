@@ -12,4 +12,11 @@ describe("fizzbuzz", () => {
     expect(fizzbuzz).toBeTruthy();
     expect(type).toBe("function");
   });
+  /**
+   * Then add 1 requirement by adding a test to describe what needs to be achieved
+   */
+  it("should return an array of length 100", () => {
+    const result = fizzbuzz();
+    expect(result.length).toBe(100);
+  });
 });
