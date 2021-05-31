@@ -38,11 +38,29 @@ describe("fizzbuzz", () => {
   /**
    * we progress by demanding a specif type for a specific position/item.
    */
-  it("should have a string item if the item is a multiple of 3 or five", () => {
+  it("should have a string item if the item is a multiple of 3", () => {
     const result = fizzbuzz();
     const multiplesOfThree = result.filter((item) => +item % 3 === 0);
     expect(
       multiplesOfThree.every((item) => typeof item === "string")
     ).toBeTruthy();
+  });
+  /**
+   * we progress by being more restrictive on the condition.
+   */
+  it("should have a string item if the item is a multiple of 3, 5 and numbers otherwise", () => {
+    const result = fizzbuzz();
+    const multiplesOfThree = result.filter((item) => +item % 3 === 0);
+    const multiplesOfFive = result.filter((item) => +item % 5 === 0);
+    const otherNumbers = result.filter(
+      (item) => !(+item % 3 === 0) && !(+item % 5 === 0)
+    );
+    expect(
+      multiplesOfThree.every((item) => typeof item === "string")
+    ).toBeTruthy();
+    expect(
+      multiplesOfFive.every((item) => typeof item === "string")
+    ).toBeTruthy();
+    expect(otherNumbers.every((item) => typeof item === "number")).toBeTruthy();
   });
 });
