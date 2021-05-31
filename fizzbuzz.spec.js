@@ -1,4 +1,6 @@
 const { fizzbuzz } = require("./fizzbuzz");
+
+const getMultiples = (array, num) => array.filter((_, i) => +i % +num === 0);
 /**
  * TDD is all about describing the app sceification by writing tests.
  * Tests should fail at first and this will force use to write the minimum amount of code to make them succeed.
@@ -40,7 +42,7 @@ describe("fizzbuzz", () => {
    */
   it("should have a string item if the item is a multiple of 3", () => {
     const result = fizzbuzz();
-    const multiplesOfThree = result.filter((item) => +item % 3 === 0);
+    const multiplesOfThree = getMultiples(result, 3);
     expect(
       multiplesOfThree.every((item) => typeof item === "string")
     ).toBeTruthy();
@@ -50,8 +52,8 @@ describe("fizzbuzz", () => {
    */
   it("should have a string item if the item is a multiple of 3, 5 and numbers otherwise", () => {
     const result = fizzbuzz();
-    const multiplesOfThree = result.filter((item, i) => +i % 3 === 0);
-    const multiplesOfFive = result.filter((item, i) => +i % 5 === 0);
+    const multiplesOfThree = getMultiples(result, 3);
+    const multiplesOfFive = getMultiples(result, 5);
     const otherNumbers = result.filter(
       (item, i) => +i % 3 !== 0 && +i % 5 !== 0
     );
@@ -62,5 +64,23 @@ describe("fizzbuzz", () => {
       multiplesOfFive.every((item) => typeof item === "string")
     ).toBeTruthy();
     expect(otherNumbers.every((item) => typeof item === "number")).toBeTruthy();
+  });
+  /**
+   * we progress by being more restrictive on the condition.
+   */
+  it("for multiples of 3 the string should be either 'fizz' 'buzz' or 'fizzbuzz'", () => {
+    const result = fizzbuzz();
+    const multiplesOfThree = getMultiples(result, 3);
+    const multiplesOfFive = getMultiples(result, 5);
+    expect(
+      multiplesOfThree.every((item) =>
+        ["fizz", "buzz", "fizzbuzz"].includes(item)
+      )
+    ).toBeTruthy();
+    expect(
+      multiplesOfFive.every((item) =>
+        ["fizz", "buzz", "fizzbuzz"].includes(item)
+      )
+    ).toBeTruthy();
   });
 });
