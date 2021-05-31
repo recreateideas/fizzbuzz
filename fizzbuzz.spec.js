@@ -83,4 +83,24 @@ describe("fizzbuzz", () => {
       )
     ).toBeTruthy();
   });
+  /**
+   * [final codition]
+   */
+  it("for multiples of 3 the string should be 'fizz' and multiples of 5 'buzz', multiple of both 'fizzbuzz'", () => {
+    const result = fizzbuzz();
+    expect(
+      result.every((item, i) => {
+        if (i % 3 === 0 && i % 5 === 0) {
+          return item === "fizzbuzz";
+        }
+        if (i % 3 === 0) {
+          return item === "fizz";
+        }
+        if (i % 5 === 0) {
+          return item === "buzz";
+        }
+        return true;
+      })
+    ).toBeTruthy();
+  });
 });
