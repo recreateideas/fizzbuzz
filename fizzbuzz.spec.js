@@ -103,4 +103,18 @@ describe("fizzbuzz", () => {
       })
     ).toBeTruthy();
   });
+  /**
+   * [second final codition]
+   */
+  it("for all other items, they should be the a number, equal to the index", () => {
+    const result = fizzbuzz();
+    expect(
+      result.every((item, i) => {
+        if (i % 3 !== 0 && i % 5 !== 0) {
+          return typeof item === "number" && item === i;
+        }
+        return true;
+      })
+    ).toBeTruthy();
+  });
 });
