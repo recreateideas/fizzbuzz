@@ -17,6 +17,23 @@ describe("fizzbuzz", () => {
    */
   it("should return an array of length 100", () => {
     const result = fizzbuzz();
+    expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(100);
+  });
+  /**
+   * Now we check for the type of the items to be the correct format. We are expecting either numbers or strings.
+   */
+  it("should have numbers or strings as items", () => {
+    const result = fizzbuzz();
+    let iterator = 0;
+    expect(iterator).toBe(100);
+    expect(
+      result.every((item) => {
+        const isString = typeof item === "string";
+        const isNumber = typeof item === "number";
+        iterator++;
+        return isString || isNumber;
+      })
+    ).toBe(true);
   });
 });
