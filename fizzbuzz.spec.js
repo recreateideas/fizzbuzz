@@ -50,10 +50,10 @@ describe("fizzbuzz", () => {
    */
   it("should have a string item if the item is a multiple of 3, 5 and numbers otherwise", () => {
     const result = fizzbuzz();
-    const multiplesOfThree = result.filter((item) => +item % 3 === 0);
-    const multiplesOfFive = result.filter((item) => +item % 5 === 0);
+    const multiplesOfThree = result.filter((item, i) => +i % 3 === 0);
+    const multiplesOfFive = result.filter((item, i) => +i % 5 === 0);
     const otherNumbers = result.filter(
-      (item) => !(+item % 3 === 0) && !(+item % 5 === 0)
+      (item, i) => +i % 3 !== 0 && +i % 5 !== 0
     );
     expect(
       multiplesOfThree.every((item) => typeof item === "string")
