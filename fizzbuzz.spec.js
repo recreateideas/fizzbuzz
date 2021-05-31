@@ -4,6 +4,10 @@ const getMultiples = (array, num) => array.filter((_, i) => +i % +num === 0);
 /**
  * TDD is all about describing the app sceification by writing tests.
  * Tests should fail at first and this will force use to write the minimum amount of code to make them succeed.
+ * Once a test succeeds, we write another test extending the functionality of the unit.
+ * THe test will fail, then we rite the code to make the test apss and refactor the code to make it nice.
+ * If any of the previous test fails, it means we introduced a regression. We fix the regression and keep going.
+ * Repeat.
  */
 describe("fizzbuzz", () => {
   /**
